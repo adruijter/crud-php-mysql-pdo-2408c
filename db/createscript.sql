@@ -29,17 +29,17 @@ USE `Achtbaan-2408c`;
 
 CREATE TABLE AchtbanenVanEuropa
 (
-     Id                 SMALLINT        UNSIGNED    NOT NULL    AUTO_INCREMENT
+     Id                 SMALLINT        UNSIGNED    NOT NULL        AUTO_INCREMENT
     ,Naam               VARCHAR(50)                 NOT NULL
     ,Pretpark           VARCHAR(50)                 NOT NULL
     ,Land               VARCHAR(50)                 NOT NULL
     ,Topsnelheid        TINYINT         UNSIGNED    NOT NULL
     ,Hoogte             TINYINT         UNSIGNED    NOT NULL
-    ,IsActief           BIT                         NOT NULL    DEFAULT 1
-    ,Opmerking          VARCHAR(255)                    NULL    DEFAULT NULL
+    ,IsActief           BIT                         NOT NULL        DEFAULT 1
+    ,Opmerking          VARCHAR(255)                    NULL        DEFAULT NULL
     ,DatumAangemaakt    DATETIME(6)                 NOT NULL
     ,DatumGewijzigd     DATETIME(6)                 NOT NULL
-    ,CONSTRAINT  PK_AchtbanenVanEuropa_Id    PRIMARY KEY    CLUSTERED(Id)
+    ,CONSTRAINT         PK_AchtbanenVanEuropa_Id    PRIMARY KEY     CLUSTERED(Id)
 ) ENGINE=InnoDB;
 
 -- Step: 03
@@ -65,4 +65,8 @@ INSERT INTO AchtbanenVanEuropa
     ,DatumGewijzigd
 )
 VALUES
-('Red Force', 'Ferrari Land', 'Spanje', 180, 112, 1, NULL, SYSDATE(6), SYSDATE(6));
+ ('Red Force', 'Ferrari Land', 'Spanje', 180, 112, 1, NULL, SYSDATE(6), SYSDATE(6))
+,('Hyperion', 'Energylandia', 'Polen', 142, 77, 1, NULL, SYSDATE(6), SYSDATE(6))
+,('Shambhala', 'PortAventura Park', 'Spanje', 134, 76, 1, NULL, SYSDATE(6), SYSDATE(6))
+,('Schwur des Kärnan', 'Hansa Park', 'Duitsland', 127, 73, 1, NULL, SYSDATE(6), SYSDATE(6));
+
