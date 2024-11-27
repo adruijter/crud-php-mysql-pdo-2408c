@@ -49,7 +49,7 @@ $statement->execute();
  */
 $result = $statement->fetchAll(PDO::FETCH_OBJ);
 
-var_dump($result);
+// var_dump($result);
 
 ?>
 
@@ -63,26 +63,46 @@ var_dump($result);
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
   </head>
   <body>
-    <h3>Hoogste Achtbanen van Europa</h3>
+    <div class="container">  
 
-    <table class="table table-hover">
-        <thead>
-            <th>Naam Achtbaan</th>
-            <th>Naam Pretpark</th>
-            <th>Land</th>
-            <th>Topsnelheid</th>
-            <th>Hoogte</th>
-        </thead>
-        <tbody>
-           <tr>
-            <td>Testachtbaan</td>
-            <td>Testpretpark</td>
-            <td>testland</td>
-            <td>testsnelheid</td>
-            <td>testhoogte</td>
-           </tr>
-        </tbody>
-    </table>
+      <div class="row">
+        <div class="col-2"></div>
+        <div class="col-8"><h3>Hoogste Achtbanen van Europa</h3></div>
+        <div class="col-2"></div>
+      </div>
+
+      <div class="row">
+        <div class="col-2"></div>
+        <div class="col-8">
+          <table class="table table-hover">
+            <thead>
+                <th>Naam Achtbaan</th>
+                <th>Naam Pretpark</th>
+                <th>Land</th>
+                <th>Topsnelheid</th>
+                <th>Hoogte</th>
+            </thead>
+            <tbody>
+              <?php foreach($result as $achtbaan) : ?>
+                      <tr>
+                        <td><?= $achtbaan->Naam ?></td>
+                        <td><?= $achtbaan->Pretpark ?></td>
+                        <td><?= $achtbaan->Land ?></td>
+                        <td><?= $achtbaan->Topsnelheid ?></td>
+                        <td><?= $achtbaan->Hoogte ?></td>
+                      </tr> 
+              <?php endforeach; ?>
+            </tbody>
+          </table>
+        </div>
+        <div class="col-2"></div>
+      </div>
+
+      
+
+      
+
+    </div>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
