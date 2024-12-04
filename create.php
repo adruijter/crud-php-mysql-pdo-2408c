@@ -1,3 +1,5 @@
+<?php var_dump($_POST); ?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -22,31 +24,30 @@
         <div class="row mt-3">
             <div class="col-3"></div>
             <div class="col-6">
-
-                <form>
+                <form action="create.php" method="POST">
                     <div class="mb-3">
                         <label for="naamAchtbaan" class="form-label">Naam Achtbaan</label>
-                        <input type="text" class="form-control" id="naamAchtbaan" aria-describedby="achtbaanHelp">
+                        <input name="achtbaan" type="text" class="form-control" id="naamAchtbaan" aria-describedby="achtbaanHelp" placeholder="Voer een achtbaan in">
                     </div>
                     <div class="mb-3">
                         <label for="naamPretpark" class="form-label">Naam Pretpark</label>
-                        <input type="text" class="form-control" id="naamPretpark" aria-describedby="pretparkHelp">
+                        <input name="pretpark" type="text" class="form-control" id="naamPretpark" aria-describedby="pretparkHelp" placeholder="Voer een pretpark in">
                     </div>
                     <div class="mb-3">
                         <label for="naamLand" class="form-label">Land</label>
-                        <input type="text" class="form-control" id="naamLand" aria-describedby="landHelp">
+                        <input name="land" type="text" class="form-control" id="naamLand" aria-describedby="landHelp" placeholder="Voer een land in">
                     </div>
                     <div class="mb-3">
                         <label for="topsnelheid" class="form-label">Topsnelheid</label>
-                        <input type="number" min="0" max="255" class="form-control" id="topsnelheid" aria-describedby="landHelp">
+                        <input name="topsnelheid" type="number" min="0" max="255" class="form-control" id="topsnelheid" aria-describedby="landHelp" placeholder="Voer een topsnelheid in">
                     </div>
                     <div class="mb-3">
                         <label for="naamHoogte" class="form-label">Hoogte</label>
-                        <input type="number" min="0" max="255" class="form-control" id="naamHoogte" aria-describedby="hoogteHelp">
+                        <input name="hoogte" type="number" min="0" max="255" class="form-control" id="naamHoogte" aria-describedby="hoogteHelp" placeholder="Voer een hoogte in">
                     </div>
                     
                     <div class="d-grid gap-2">
-                        <button type="submit" class="btn btn-primary btn-lg mt-3">Verzenden</button>
+                        <button name="submit" type="submit" class="btn btn-primary btn-lg mt-3" value="submit">Verzenden</button>
                     </div>
                 </form>
             </div>
