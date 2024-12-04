@@ -60,14 +60,23 @@ $result = $statement->fetchAll(PDO::FETCH_OBJ);
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Achtbanen van Europa</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
   </head>
   <body>
-    <div class="container">  
+    <div class="container mt-3">  
 
       <div class="row">
         <div class="col-2"></div>
-        <div class="col-8"><h3>Hoogste Achtbanen van Europa</h3></div>
+        <div class="col-8 text-primary"><h3>Hoogste Achtbanen van Europa</h3></div>
+        <div class="col-2"></div>
+      </div>
+
+      <div class="row">
+        <div class="col-2"></div>
+        <div class="col-8">
+          Invoegen nieuwe achtbaan: <i class="bi bi-plus-square-fill"></i>
+        </div>
         <div class="col-2"></div>
       </div>
 
