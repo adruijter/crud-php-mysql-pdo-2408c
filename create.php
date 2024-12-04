@@ -57,6 +57,10 @@ $statement->bindValue(':hoogte', $_POST['hoogte'], PDO::PARAM_INT);
 
 $statement->execute();
 
+$display = 'flex';
+
+header('refresh:3;url=index.php');
+
 }
 ?>
 
@@ -70,6 +74,16 @@ $statement->execute();
   </head>
   <body>
     <div class="container mt-3">
+
+        <div class="row" style="display:<?= $display ?? 'none'; ?>">
+            <div class="col-3"></div>
+            <div class="col-6">
+                <div class="alert alert-success" role="alert">
+                    De achtbaan is toegevoegd aan de database, u wordt doorgestuurd naar de index-pagina.
+                </div>
+            </div>
+            <div class="col-3"></div>
+        </div>
 
 
         <div class="row">
