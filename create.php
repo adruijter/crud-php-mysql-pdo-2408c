@@ -1,4 +1,64 @@
-<?php var_dump($_POST); ?>
+<?php
+var_dump($_POST); 
+
+if (isset($_POST['submit'])) {
+    
+/**
+ * We halen de inloggegevens van config.php binnen
+ */
+include('config/config.php');
+
+/**
+ * Maak een dsn (datasourcename-string) om in te loggen 
+ * op de mysql-server en database
+ */
+$dsn = "mysql:host=$dbHost;
+        dbname=$dbName;
+        charset=UTF8";
+
+/**
+ * Maak een nieuw PDO-object zodat we verbinding kunnen maken met de
+ * mysql-server en database
+ */
+$pdo = new PDO($dsn, $dbUser, $dbPass);
+
+$sql = "INSERT INTO AchtbanenVanEuropa
+        (
+             Naam
+            ,Pretpark
+            ,Land
+            ,Topsnelheid
+            ,Hoogte
+            ,IsActief
+            ,Opmerking
+            ,DatumAangemaakt
+            ,DatumGewijzigd
+        )
+        VALUES
+        (    
+             :achtbaan
+            ,:pretpark
+            ,:land
+            ,:topsnelheid
+            ,:hoogte
+            ,1
+            ,NULL
+            ,SYSDATE(6)
+            ,SYSDATE(6)
+        )";
+
+$statement = $pdo->prepare($sql);
+
+$statement->bindValue(':achtbaan', $_POST['achtbaan'], PDO::PARAM_STR);
+$statement->bindValue(':pretpark', $_POST['pretpark'], PDO::PARAM_STR);
+$statement->bindValue(':land', $_POST['land'], PDO::PARAM_STR);
+$statement->bindValue(':topsnelheid', $_POST['topsnelheid'], PDO::PARAM_INT); 
+$statement->bindValue(':hoogte', $_POST['hoogte'], PDO::PARAM_INT);
+
+$statement->execute();
+
+}
+?>
 
 <!doctype html>
 <html lang="en">
