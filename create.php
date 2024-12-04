@@ -19,31 +19,42 @@
         </div>
 
 
-        <form>
-            <div class="mb-3">
-                <label for="naamAchtbaan" class="form-label">Naam Achtbaan</label>
-                <input type="text" class="form-control" id="naamAchtbaan" aria-describedby="achtbaanHelp">
+        <div class="row mt-3">
+            <div class="col-3"></div>
+            <div class="col-6">
+
+                <form>
+                    <div class="mb-3">
+                        <label for="naamAchtbaan" class="form-label">Naam Achtbaan</label>
+                        <input type="text" class="form-control" id="naamAchtbaan" aria-describedby="achtbaanHelp">
+                    </div>
+                    <div class="mb-3">
+                        <label for="naamPretpark" class="form-label">Naam Pretpark</label>
+                        <input type="text" class="form-control" id="naamPretpark" aria-describedby="pretparkHelp">
+                    </div>
+                    <div class="mb-3">
+                        <label for="naamLand" class="form-label">Land</label>
+                        <input type="text" class="form-control" id="naamLand" aria-describedby="landHelp">
+                    </div>
+                    <div class="mb-3">
+                        <label for="topsnelheid" class="form-label">Topsnelheid</label>
+                        <input type="number" min="0" max="255" class="form-control" id="topsnelheid" aria-describedby="landHelp">
+                    </div>
+                    <div class="mb-3">
+                        <label for="naamHoogte" class="form-label">Hoogte</label>
+                        <input type="number" min="0" max="255" class="form-control" id="naamHoogte" aria-describedby="hoogteHelp">
+                    </div>
+                    
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-primary btn-lg mt-3">Verzenden</button>
+                    </div>
+                </form>
             </div>
-            <div class="mb-3">
-                <label for="naamPretpark" class="form-label">Naam Pretpark</label>
-                <input type="text" class="form-control" id="naamPretpark" aria-describedby="pretparkHelp">
-            </div>
-            <div class="mb-3">
-                <label for="naamLand" class="form-label">Land</label>
-                <input type="text" class="form-control" id="naamLand" aria-describedby="landHelp">
-            </div>
-            <div class="mb-3">
-                <label for="topsnelheid" class="form-label">Topsnelheid</label>
-                <input type="number" min="0" max="255" class="form-control" id="topsnelheid" aria-describedby="landHelp">
-            </div>
-            <div class="mb-3">
-                <label for="naamHoogte" class="form-label">Hoogte</label>
-                <input type="number" min="0" max="255" class="form-control" id="naamHoogte" aria-describedby="hoogteHelp">
-            </div>
-            
-            
-            <button type="submit" class="btn btn-primary">Verzenden</button>
-        </form>
+            <div class="col-3"></div>
+        </div>
+
+
+        
 
 
 
