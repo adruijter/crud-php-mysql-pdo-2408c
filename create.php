@@ -1,5 +1,4 @@
 <?php
-var_dump($_POST); 
 
 if (isset($_POST['submit'])) {
     
@@ -49,6 +48,8 @@ $sql = "INSERT INTO AchtbanenVanEuropa
 
 $statement = $pdo->prepare($sql);
 
+$_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
 $statement->bindValue(':achtbaan', $_POST['achtbaan'], PDO::PARAM_STR);
 $statement->bindValue(':pretpark', $_POST['pretpark'], PDO::PARAM_STR);
 $statement->bindValue(':land', $_POST['land'], PDO::PARAM_STR);
@@ -77,9 +78,9 @@ header('refresh:3;url=index.php');
 
         <div class="row" style="display:<?= $display ?? 'none'; ?>">
             <div class="col-3"></div>
-            <div class="col-6">
+            <div class="col-6 text-center">
                 <div class="alert alert-success" role="alert">
-                    De achtbaan is toegevoegd aan de database, u wordt doorgestuurd naar de index-pagina.
+                    Record is toegevoegd, u wordt doorgestuurd naar de index-pagina.
                 </div>
             </div>
             <div class="col-3"></div>

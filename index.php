@@ -30,7 +30,7 @@ $sql = "SELECT  AVE.Naam
 
         FROM AchtbanenVanEuropa AS AVE
         
-        ORDER BY AVE.Hoogte ASC";
+        ORDER BY AVE.Hoogte DESC";
 
 /**
  * Met de method prepare in de PDO-class maken we
