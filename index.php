@@ -72,10 +72,10 @@ $result = $statement->fetchAll(PDO::FETCH_OBJ);
         <div class="col-2"></div>
       </div>
 
-      <div class="row">
+      <div class="row my-2">
         <div class="col-2"></div>
         <div class="col-8">
-          Invoegen nieuwe achtbaan: <i class="bi bi-plus-square-fill"></i>
+          Invoegen nieuwe achtbaan: <a href="create.php"><i class="bi bi-plus-square-fill text-danger"></i></a>
         </div>
         <div class="col-2"></div>
       </div>
