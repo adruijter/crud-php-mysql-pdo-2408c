@@ -22,7 +22,8 @@ $pdo = new PDO($dsn, $dbUser, $dbPass);
  * Maak een select-query die alle gegevens uit de tabel haalt
  */
 
-$sql = "SELECT  AVE.Naam
+$sql = "SELECT  AVE.Id
+               ,AVE.Naam
                ,AVE.Pretpark
                ,AVE.Land
                ,AVE.Topsnelheid
@@ -90,6 +91,8 @@ $result = $statement->fetchAll(PDO::FETCH_OBJ);
                 <th>Land</th>
                 <th>Topsnelheid</th>
                 <th>Hoogte</th>
+                <th>Update</th>
+                <th>Delete</th>
             </thead>
             <tbody>
               <?php foreach($result as $achtbaan) : ?>
@@ -99,6 +102,16 @@ $result = $statement->fetchAll(PDO::FETCH_OBJ);
                         <td><?= $achtbaan->Land ?></td>
                         <td><?= $achtbaan->Topsnelheid ?></td>
                         <td><?= $achtbaan->Hoogte ?></td>
+                        <td class="text-center ">
+                          <a href="update.php?Id=<?= $achtbaan->Id; ?>" class="text-primary">
+                            <i class="bi bi-pencil-square"></i> 
+                          </a>                           
+                        </td>
+                        <td class="text-center">
+                          <a href="delete.php?Id=<?= $achtbaan->Id; ?>" class="text-danger">
+                            <i class="bi bi-x-square-fill"></i>
+                          </a>                          
+                        </td>
                       </tr> 
               <?php endforeach; ?>
             </tbody>
