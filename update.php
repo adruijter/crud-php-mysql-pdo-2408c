@@ -1,4 +1,6 @@
 <?php
+
+
 /**
  * We halen de inloggegevens van config.php binnen
  */
@@ -17,6 +19,50 @@ $dsn = "mysql:host=$dbHost;
  * mysql-server en database
  */
 $pdo = new PDO($dsn, $dbUser, $dbPass);
+
+/**
+ * Als er op de submit-knop is gedrukt
+ */
+if (isset($_POST['submit'])) {
+    
+    /**
+     * Maak een update-query die een record wijzigt in de tabel
+     */
+    $sql = "UPDATE AchtbanenVanEuropa AS AVE
+            SET
+                 AVE.Naam           = :naam
+                ,AVE.Pretpark       = :pretpark
+                ,AVE.Land           = :land
+                ,AVE.Topsnelheid    = :topsnelheid
+                ,AVE.Hoogte         = :hoogte
+                
+            WHERE Id = :id";
+
+    /**
+     * Met de method prepare in de PDO-class maken we
+     * de query gereed om uit te voeren
+     */
+    $statement = $pdo->prepare($sql);
+
+    /**
+     * Koppel de placeholder :id aan de waarde die we binnenkrijgen
+     * via de URL en het GET-array
+     */
+    $statement->bindValue(':id', $_POST['Id'], PDO::PARAM_INT);
+
+    /**
+     * Voer de query uit
+     */
+    $statement->execute();
+
+    /**
+     * Meld de gebruiker dat we klaar zijn en stuur hem terug naar de index-pagina
+     */
+    echo 'De gegevens zijn gewijzigd, u wordt doorgestuurd naar de index-pagina.';
+
+    header('Refresh:3; url=index.php');
+
+} else {
 
 /**
  * Maak een query die het record ophaalt uit de tabel
@@ -57,7 +103,7 @@ $statement->execute();
 $result = $statement->fetch(PDO::FETCH_OBJ);
 
 var_dump($result);
-
+}
 
 ?>
 
@@ -88,7 +134,7 @@ var_dump($result);
         <div class="row">
             <div class="col-3"></div>
             <div class="col-6 text-primary">
-                <h3>Voer een nieuwe achtbaan in:</h3>
+                <h3>Wijzig de Achtbaangegevens:</h3>
             </div>
             <div class="col-3"></div>
         </div>
@@ -97,30 +143,35 @@ var_dump($result);
         <div class="row mt-3">
             <div class="col-3"></div>
             <div class="col-6">
-                <form action="create.php" method="POST">
+                <form action="update.php" method="POST">
                     <div class="mb-3">
                         <label for="naamAchtbaan" class="form-label">Naam Achtbaan</label>
-                        <input name="achtbaan" type="text" class="form-control" id="naamAchtbaan" aria-describedby="achtbaanHelp" placeholder="Voer een achtbaan in">
+                        <input name="achtbaan" type="text" class="form-control" id="naamAchtbaan" 
+                            aria-describedby="achtbaanHelp" placeholder="Voer een achtbaan in" value="<?= $result->Naam; ?>">
                     </div>
                     <div class="mb-3">
                         <label for="naamPretpark" class="form-label">Naam Pretpark</label>
-                        <input name="pretpark" type="text" class="form-control" id="naamPretpark" aria-describedby="pretparkHelp" placeholder="Voer een pretpark in">
+                        <input name="pretpark" type="text" class="form-control" id="naamPretpark" 
+                            aria-describedby="pretparkHelp" placeholder="Voer een pretpark in" value="<?= $result->Pretpark ?>">
                     </div>
                     <div class="mb-3">
                         <label for="naamLand" class="form-label">Land</label>
-                        <input name="land" type="text" class="form-control" id="naamLand" aria-describedby="landHelp" placeholder="Voer een land in">
+                        <input name="land" type="text" class="form-control" id="naamLand" 
+                            aria-describedby="landHelp" placeholder="Voer een land in" value="<?= $result->Land; ?>">
                     </div>
                     <div class="mb-3">
                         <label for="topsnelheid" class="form-label">Topsnelheid</label>
-                        <input name="topsnelheid" type="number" min="0" max="255" class="form-control" id="topsnelheid" aria-describedby="landHelp" placeholder="Voer een topsnelheid in">
+                        <input name="topsnelheid" type="number" min="0" max="255" class="form-control" id="topsnelheid" 
+                            aria-describedby="landHelp" placeholder="Voer een topsnelheid in" value="<?= $result->Topsnelheid; ?>">
                     </div>
                     <div class="mb-3">
                         <label for="naamHoogte" class="form-label">Hoogte</label>
-                        <input name="hoogte" type="number" min="0" max="255" class="form-control" id="naamHoogte" aria-describedby="hoogteHelp" placeholder="Voer een hoogte in">
+                        <input name="hoogte" type="number" min="0" max="255" class="form-control" id="naamHoogte" 
+                            aria-describedby="hoogteHelp" placeholder="Voer een hoogte in" value="<?= $result->Hoogte; ?>">
                     </div>
                     
                     <div class="d-grid gap-2">
-                        <button name="submit" type="submit" class="btn btn-primary btn-lg mt-3" value="submit">Verzenden</button>
+                        <button name="submit" type="submit" class="btn btn-primary btn-lg mt-3" value="submit">Wijzigen</button>
                     </div>
                 </form>
             </div>
