@@ -49,6 +49,11 @@ if (isset($_POST['submit'])) {
      * via de URL en het GET-array
      */
     $statement->bindValue(':id', $_POST['Id'], PDO::PARAM_INT);
+    $statement->bindValue(':naam', $_POST['naam'], PDO::PARAM_STR);
+    $statement->bindValue(':pretpark', $_POST['pretpark'], PDO::PARAM_STR);
+    $statement->bindValue(':land', $_POST['land'], PDO::PARAM_STR);
+    $statement->bindValue(':topsnelheid', $_POST['topsnelheid'], PDO::PARAM_INT);
+    $statement->bindValue(':hoogte', $_POST['hoogte'], PDO::PARAM_INT);
 
     /**
      * Voer de query uit
@@ -169,6 +174,8 @@ var_dump($result);
                         <input name="hoogte" type="number" min="0" max="255" class="form-control" id="naamHoogte" 
                             aria-describedby="hoogteHelp" placeholder="Voer een hoogte in" value="<?= $result->Hoogte; ?>">
                     </div>
+
+                    <input type="hidden" name="Id" value="<?= $_GET["Id"]; ?>">
                     
                     <div class="d-grid gap-2">
                         <button name="submit" type="submit" class="btn btn-primary btn-lg mt-3" value="submit">Wijzigen</button>
